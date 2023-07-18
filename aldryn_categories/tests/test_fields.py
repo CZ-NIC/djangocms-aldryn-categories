@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 from django.core.exceptions import ImproperlyConfigured
 from django.test import TestCase
 
@@ -103,18 +99,18 @@ class TestCategoryField(CategoryTestCaseMixin, TestCase):
         form_field = field.formfield()
         self.assertTrue(isinstance(form_field, CategoryModelChoiceField))
         field_type = field.get_internal_type()
-        self.assertEquals(field_type, 'ForeignKey')
+        self.assertEqual(field_type, 'ForeignKey')
 
     def test_category_one_to_one_field(self):
         field = CategoryOneToOneField(Category)
         form_field = field.formfield()
         self.assertTrue(isinstance(form_field, CategoryModelChoiceField))
         field_type = field.get_internal_type()
-        self.assertEquals(field_type, 'ForeignKey')
+        self.assertEqual(field_type, 'ForeignKey')
 
     def test_category_many_to_many_field(self):
         field = CategoryManyToManyField(Category)
         form_field = field.formfield()
         self.assertTrue(isinstance(form_field, CategoryMultipleChoiceField))
         field_type = field.get_internal_type()
-        self.assertEquals(field_type, 'ManyToManyField')
+        self.assertEqual(field_type, 'ManyToManyField')

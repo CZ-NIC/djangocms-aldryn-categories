@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.fields.related import (
     ForeignKey,
@@ -16,7 +12,7 @@ from django.utils.safestring import mark_safe
 from .models import Category
 
 
-class CategoryLabelFromInstanceMixin(object):
+class CategoryLabelFromInstanceMixin:
     error_message = ''
 
     def label_from_instance(self, obj):
@@ -25,7 +21,7 @@ class CategoryLabelFromInstanceMixin(object):
             if obj.depth > 1:
                 prefix = '&nbsp;&nbsp;' * (obj.depth - 1)
             name = obj.safe_translation_getter('name')
-            label = "{prefix}{name}".format(prefix=prefix, name=escape(name))
+            label = f"{prefix}{escape(name)}"
             return mark_safe(label)
         except AttributeError:
             raise ImproperlyConfigured(self.error_message)
@@ -48,7 +44,7 @@ class CategoryForeignKey(ForeignKey):
     def __init__(self, to=Category, **kwargs):
         """Sets Category as the default `to` parameter."""
         kwargs['on_delete'] = getattr(kwargs, 'on_delete', CASCADE)
-        super(CategoryForeignKey, self).__init__(to, **kwargs)
+        super().__init__(to, **kwargs)
 
     # This is necessary for Django 1.7.4+
     def get_internal_type(self):
@@ -58,7 +54,7 @@ class CategoryForeignKey(ForeignKey):
                   choices_form_class=None, **kwargs):
         kwargs["form_class"] = form_class
         kwargs["choices_form_class"] = choices_form_class
-        return super(CategoryForeignKey, self).formfield(**kwargs)
+        return super().formfield(**kwargs)
 
 
 class CategoryOneToOneField(OneToOneField):
@@ -70,7 +66,7 @@ class CategoryOneToOneField(OneToOneField):
     def __init__(self, to=Category, **kwargs):
         """Sets Category as the default `to` parameter."""
         kwargs['on_delete'] = getattr(kwargs, 'on_delete', CASCADE)
-        super(CategoryOneToOneField, self).__init__(to, **kwargs)
+        super().__init__(to, **kwargs)
 
     # This is necessary for Django 1.7.4+
     def get_internal_type(self):
@@ -99,7 +95,7 @@ class CategoryManyToManyField(ManyToManyField):
 
     def __init__(self, to=Category, **kwargs):
         """Sets Category as the default `to` parameter."""
-        super(CategoryManyToManyField, self).__init__(to, **kwargs)
+        super().__init__(to, **kwargs)
 
     # This is necessary for Django 1.7.4+
     def get_internal_type(self):
@@ -109,4 +105,4 @@ class CategoryManyToManyField(ManyToManyField):
                   choices_form_class=None, **kwargs):
         kwargs["form_class"] = form_class
         kwargs["choices_form_class"] = choices_form_class
-        return super(CategoryManyToManyField, self).formfield(**kwargs)
+        return super().formfield(**kwargs)

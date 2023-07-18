@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 import random
 import string
 
@@ -12,7 +8,7 @@ from django.test import RequestFactory
 from django.contrib.auth.models import User
 
 
-class CategoryTestCaseMixin(object):
+class CategoryTestCaseMixin:
     """Mixin class for testing Categories"""
 
     @staticmethod
@@ -26,8 +22,8 @@ class CategoryTestCaseMixin(object):
         return node.__class__.objects.get(id=node.id)
 
     @classmethod
-    def rand_str(cls, prefix=u'', length=23, chars=string.ascii_letters):
-        return prefix + u''.join(random.choice(chars) for _ in range(length))
+    def rand_str(cls, prefix='', length=23, chars=string.ascii_letters):
+        return prefix + ''.join(random.choice(chars) for _ in range(length))
 
     @classmethod
     def create_user(cls):

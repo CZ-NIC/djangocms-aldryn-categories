@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-import six
-
 from django.test import TestCase, TransactionTestCase
 from django.utils import translation
 
@@ -21,17 +16,17 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
         root = Category.add_root(name=name)
         root.set_current_language("en")
         root.save()
-        self.assertEquals(root.slug, "root-node")
+        self.assertEqual(root.slug, "root-node")
 
     def test_slug_collision(self):
         root = Category.add_root(name="test")
         root.save()
         root = self.reload(root)
-        self.assertEquals(root.slug, "test")
+        self.assertEqual(root.slug, "test")
         child1 = root.add_child(name="test")
-        self.assertEquals(child1.slug, "test-1")
+        self.assertEqual(child1.slug, "test-1")
         child2 = root.add_child(name="test")
-        self.assertEquals(child2.slug, "test-2")
+        self.assertEqual(child2.slug, "test-2")
 
     def test_str(self):
         root = Category.add_root(name="test")
@@ -40,10 +35,10 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
 
     def test_str_malicious(self):
         malicious = "<script>alert('hi');</script>"
-        escaped = "&lt;script&gt;alert(&#39;hi&#39;);&lt;/script&gt;"
+        escaped = "&lt;script&gt;alert(&#x27;hi&#x27;);&lt;/script&gt;"
         root = Category.add_root(name=malicious)
         root.save()
-        self.assertEqual(six.u(str(root)), escaped)
+        self.assertEqual(str(root), escaped)
 
     def test_delete(self):
         root = Category.add_root(name="test")
@@ -63,14 +58,14 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
         root = Category.add_root(name="Root Node")
         root.save()
         child1 = root.add_child(name="Germanic umlauts: ä ö ü ß Ä Ö Ü")
-        self.assertEquals(child1.slug, "germanic-umlauts-a-o-u-ss-a-o-u")
+        self.assertEqual(child1.slug, "germanic-umlauts-a-o-u-ss-a-o-u")
         child2 = root.add_child(name="Slavic Cyrillic: смачні пляцки")
-        self.assertEquals(child2.slug, "slavic-cyrillic-smachni-pliatski")
+        self.assertEqual(child2.slug, "slavic-cyrillic-smachni-pliatski")
         child3 = root.add_child(name="Simplified Chinese: 美味蛋糕")
-        self.assertEquals(child3.slug, "simplified-chinese-mei-wei-dan-gao")
+        self.assertEqual(child3.slug, "simplified-chinese-mei-wei-dan-gao")
         # non-ascii only slug
         child4 = root.add_child(name="ß ў 美")
-        self.assertEquals(child4.slug, "ss-u-mei")
+        self.assertEqual(child4.slug, "ss-u-mei")
 
 
 class TestCategoryTrees(CategoryTestCaseMixin, TestCase):
@@ -80,7 +75,7 @@ class TestCategoryTrees(CategoryTestCaseMixin, TestCase):
         name = "Root Node"
         root = Category.add_root(name=name)
         root.set_current_language("en")
-        self.assertEquals(root.name, "Root Node")
+        self.assertEqual(root.name, "Root Node")
 
     def test_create_in_orm_category(self):
         name = "Root Node"
@@ -88,7 +83,7 @@ class TestCategoryTrees(CategoryTestCaseMixin, TestCase):
         root.set_current_language("en")
         root.save()
         root = self.reload(root)
-        self.assertEquals(root.name, name)
+        self.assertEqual(root.name, name)
 
     def test_tree_depth(self):
         a = Category.add_root(name="A")
@@ -99,10 +94,10 @@ class TestCategoryTrees(CategoryTestCaseMixin, TestCase):
     def test_get_children_count(self):
         a = Category.add_root(name="A")
         a.add_child(name="B")
-        self.assertEquals(a.get_children_count(), 1)
+        self.assertEqual(a.get_children_count(), 1)
         a.add_child(name="C")
         a = self.reload(a)
-        self.assertEquals(a.get_children_count(), 2)
+        self.assertEqual(a.get_children_count(), 2)
 
     def test_get_children(self):
         a = Category.add_root(name="A")

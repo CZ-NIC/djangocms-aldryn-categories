@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
 
@@ -19,6 +16,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='categorytranslation',
-            unique_together=set([('language_code', 'master'), ('language_code', 'slug')]),
+            unique_together={('language_code', 'master'), ('language_code', 'slug')},
         ),
     ]

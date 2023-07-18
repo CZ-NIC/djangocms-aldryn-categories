@@ -1,14 +1,10 @@
-**Deprecated**
+|Project continuation| |Pypi package| |Pypi status| |Python versions| |License|
 
-This project is no longer supported.
 
-Divio will undertake no further development or maintenance of this project. If you are interested in continuing to develop it, use the fork functionality from GitHub. We are not able to transfer ownership of the repository to another party.
-
-==================
 Aldryn Categories
-==================
+=================
 
-|pypi_version| |build_status| |coverage_status| |codeclimate|
+Continuation of the deprecated project `Divio Aldryn search <https://github.com/divio/aldryn-translation-tools>`_.
 
 Aldryn Categories is a simple, Aldryn-compatible project that provides
 hierarchical *categories* as an independent model in your project. Categories
@@ -32,25 +28,18 @@ feedback in the form of issues and pull requests. Before submitting your pull
 request, please review our `guidelines for Aldryn addons <http://docs.aldryn.com/en/latest/reference/addons/index.html>`_.
 
 
-============
-Requirements
-============
-
-1. Python 2.7, 3.4, 3.5, 3.6
-2. Django 1.11, 2.0, 2.1
-3. django-treebeard v4.3+
-4. django-parler v1.9.2+
-
-
-.. |pypi_version| image:: http://img.shields.io/pypi/v/aldryn-categories.svg
-   :target: https://pypi.python.org/pypi/aldryn-categories
-   :alt: PyPI Version
-.. |build_status| image:: https://travis-ci.org/aldryn/aldryn-categories.svg?branch=master
-   :target: https://travis-ci.org/aldryn/aldryn-categories/
-   :alt: Build Status
-.. |coverage_status| image:: http://img.shields.io/coveralls/aldryn/aldryn-categories/master.svg
-   :target: https://coveralls.io/r/aldryn/aldryn-categories?branch=master
-   :alt: Coverage Status
-.. |codeclimate| image:: https://codeclimate.com/github/aldryn/aldryn-categories/badges/gpa.svg
-   :target: https://codeclimate.com/github/aldryn/aldryn-categories
-   :alt: Code Climate
+.. |Project continuation| image:: https://img.shields.io/badge/Continuation-Divio_Aldryn_Search-blue
+    :target: https://github.com/CZ-NIC/djangocms-aldryn-categories
+    :alt: Continuation of the deprecated project "Divio Aldryn Categories"
+.. |Pypi package| image:: https://img.shields.io/pypi/v/djangocms-aldryn-categories.svg
+    :target: https://pypi.python.org/pypi/djangocms-aldryn-categories/
+    :alt: Pypi package
+.. |Pypi status| image:: https://img.shields.io/pypi/status/djangocms-aldryn-categories.svg
+   :target: https://pypi.python.org/pypi/djangocms-aldryn-categories
+   :alt: status
+.. |Python versions| image:: https://img.shields.io/pypi/pyversions/djangocms-aldryn-categories.svg
+   :target: https://pypi.python.org/pypi/djangocms-aldryn-categories
+   :alt: Python versions
+.. |License| image:: https://img.shields.io/pypi/l/djangocms-aldryn-categories.svg
+    :target: https://pypi.python.org/pypi/djangocms-aldryn-categories/
+    :alt: license

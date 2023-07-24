@@ -2,7 +2,7 @@
 *.pyc
 *.sublime-project
 *.sublime-workspace
-aldryn_categories.egg-info
+djangocms_aldryn_categories.egg-info
 dist
 .coverage
 build

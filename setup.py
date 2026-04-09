@@ -33,6 +33,7 @@ setup(
     ],
     install_requires=[
         'djangocms-aldryn-translation-tools',
+        'django-treebeard ~= 5.0',
     ],
     include_package_data=True,
     zip_safe=False,

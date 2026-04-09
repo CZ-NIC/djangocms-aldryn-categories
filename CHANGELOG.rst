@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.0.2 (2026-04-09)
+==================
+
+* Fix field names in class CategoryAdmin to treebeard_position and treebeard_ref_node renamed in django-treebeard~=5.0.
+
+
 2.0.1 (2023-07-24)
 ==================
 

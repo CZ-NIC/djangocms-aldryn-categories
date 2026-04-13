@@ -1,6 +1,9 @@
+
 from django.db import models
 from django.utils.html import escape
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+from djangocms_attributes_field.fields import AttributesField
 
 from aldryn_translation_tools.models import (
     TranslatedAutoSlugifyMixin, TranslationHelperMixin)
@@ -60,6 +63,10 @@ class Category(TranslatedAutoSlugifyMixin, TranslationHelperMixin,
         ),
         meta={'unique_together': (('language_code', 'slug', ), )}
     )
+    attributes = AttributesField(
+        verbose_name=_('Attributes'),
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _('category')
@@ -83,3 +90,12 @@ class Category(TranslatedAutoSlugifyMixin, TranslationHelperMixin,
     def __str__(self):
         name = self.safe_translation_getter('name', any_language=True)
         return escape(name)
+
+    def attributes_str(self):
+        """Convert attributes to string."""
+        parts = (
+            f'{name}="{escape(value)}"' if value else f"{name}"
+            for name, value in self.attributes.items()
+        )
+        attributes_string = (" ".join(parts)).strip()
+        return mark_safe(" " + attributes_string) if attributes_string else ""

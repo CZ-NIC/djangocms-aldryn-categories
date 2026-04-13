@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.1.0 (2026-04-13)
+==================
+
+* Add field attributes into model Category.
+
 2.0.2 (2026-04-09)
 ==================
 

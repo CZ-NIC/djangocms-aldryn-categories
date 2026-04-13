@@ -33,6 +33,12 @@ class TestCategories(CategoryTestCaseMixin, TransactionTestCase):
         root.save()
         self.assertEqual(root.name, str(root))
 
+    def test_attributes_str(self):
+        root = Category.add_root(name="test", attributes={"class": "main", "id": "m42"})
+        root.save()
+        self.assertEqual(root.name, str(root))
+        self.assertEqual(root.attributes_str(), ' class="main" id="m42"')
+
     def test_str_malicious(self):
         malicious = "<script>alert('hi');</script>"
         escaped = "&lt;script&gt;alert(&#x27;hi&#x27;);&lt;/script&gt;"

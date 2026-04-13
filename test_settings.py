@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import sys
 
 
 HELPER_SETTINGS = {
@@ -27,13 +28,15 @@ HELPER_SETTINGS = {
             # Do not remove or change this value or tests may break.
             'fallback': 'fr',
         }
-    }
+    },
+    'CMS_CONFIRM_VERSION4': True,
 }
 
 
 def run():
     from djangocms_helper import runner
-    runner.run('aldryn_categories')
+    extra_args = sys.argv[1:] if len(sys.argv) > 1 else []
+    runner.cms('aldryn_categories', [sys.argv[0]], extra_args=extra_args)
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 djangocms-aldryn-translation-tools
 coverage>=3.7.1
-djangocms-helper @ git+https://github.com/nephila/django-app-helper.git@3.3.1
+django-app-helper
 flake8
 python-coveralls==2.4.2
 tox

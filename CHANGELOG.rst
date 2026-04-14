@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.1.1 (2026-04-14)
+==================
+
+* Version resolution by treebeard in admin.
+
 2.1.0 (2026-04-13)
 ==================
 

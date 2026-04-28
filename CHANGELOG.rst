@@ -1,6 +1,12 @@
 Changelog
 =========
 
+2.1.2 (2026-04-28)
+==================
+
+* Resolve version by packaging.
+* Fix CategoryAdmin(TreeAdmin).
+
 2.1.1 (2026-04-14)
 ==================
 

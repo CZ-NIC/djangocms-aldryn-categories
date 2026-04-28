@@ -41,6 +41,7 @@ setup(
         'djangocms-aldryn-translation-tools',
         'django-treebeard >= 4.8,<6.0',
         'djangocms-attributes-field ~= 4.1',
+        'packaging',
     ],
     include_package_data=True,
     zip_safe=False,

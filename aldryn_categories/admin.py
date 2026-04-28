@@ -1,7 +1,9 @@
-import treebeard
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+from packaging import version
 from parler.admin import TranslatableAdmin
+from treebeard import __version__ as treebeard_version
+from treebeard.admin import TreeAdmin
 
 from .forms import CategoryAdminForm
 from .models import Category
@@ -9,14 +11,14 @@ from .models import Category
 fields = (
     '_position',
     '_ref_node_id'
-) if int(treebeard.__version__.split(".")[0]) < 5 else (
+) if version.parse(treebeard_version) < version.parse("5.0") else (
     'treebeard_position',
     'treebeard_ref_node'
 )
 fields += ('attributes', )
 
 
-class CategoryAdmin(TranslatableAdmin, treebeard.admin.TreeAdmin):
+class CategoryAdmin(TranslatableAdmin, TreeAdmin):
     form = CategoryAdminForm
 
     fieldsets = (
